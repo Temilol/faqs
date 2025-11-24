@@ -29,14 +29,8 @@
     
     header {
       text-align: center;
-      padding: 0px 20px 25px;
+      padding: 20px 20px 25px;
       background: var(--color-secondary);
-    }
-
-    .wedding-logo {
-      width: 160px;
-      max-width: 60%;
-      margin-bottom: 0px;
     }
 
     header h1 {
@@ -74,7 +68,11 @@
       box-shadow: 0 4px 12px var(--shadow);
       position: relative;
       font-family: 'Playfair Display', serif;
-      transition: border 0.3s ease, background 0.3s ease;
+      transition: border 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .accordion:hover {
+      box-shadow: 0 6px 16px rgba(0,0,0,0.08);
     }
 
     .accordion.active {
@@ -101,7 +99,7 @@
       overflow: hidden;
       max-height: 0;
       border-radius: 0 0 12px 12px;
-      transition: max-height 0.3s ease-out;
+      transition: max-height 0.4s ease-in-out, background 0.4s ease;
       box-shadow: 0 4px 12px var(--shadow);
       margin-top: -10px;
       margin-bottom: 20px;
@@ -124,60 +122,89 @@
       font-size: 0.9rem;
       background: var(--color-secondary);
     }
+
+    @media (max-width: 480px) {
+      .accordion {
+        padding: 15px 20px;
+        font-size: 1rem;
+      }
+      .panel {
+        padding: 0 20px;
+      }
+      header h1 {
+        font-size: 2.2rem;
+      }
+      header p {
+        font-size: 1rem;
+      }
+    }
   </style>
 </head>
 
 <body>
 
 <header>
-  <!-- Logo Above Title -->
-  <img src="logo.png" alt="Wedding Logo" class="wedding-logo" />
-
   <h1>Toluwani & Temilola</h1>
   <p>Wedding FAQ — Everything you need to know</p>
 </header>
 
 <section class="faq-section">
 
-  <button class="accordion">📍 Where is the wedding?</button>
-  <div class="panel"><div class="panel-content">
-    <p>[Insert venue name + address]</p>
-  </div></div>
+  <button class="accordion" aria-expanded="false" aria-controls="faq1" id="accordion1">📍 Where is the wedding?</button>
+  <div id="faq1" class="panel" role="region" aria-labelledby="accordion1">
+    <div class="panel-content">
+      <p>[Insert venue name + address]</p>
+    </div>
+  </div>
 
-  <button class="accordion">⏰ What time should I arrive?</button>
-  <div class="panel"><div class="panel-content">
-    <p>[Please arrive 15–20 minutes early to be seated before the ceremony begins.]</p>
-  </div></div>
+  <button class="accordion" aria-expanded="false" aria-controls="faq2" id="accordion2">⏰ What time should I arrive?</button>
+  <div id="faq2" class="panel" role="region" aria-labelledby="accordion2">
+    <div class="panel-content">
+      <p>[Please arrive 15–20 minutes early to be seated before the ceremony begins.]</p>
+    </div>
+  </div>
 
-  <button class="accordion">👗 What is the dress code?</button>
-  <div class="panel"><div class="panel-content">
-    <p>[Example: Cocktail attire / Semi-formal]</p>
-  </div></div>
+  <button class="accordion" aria-expanded="false" aria-controls="faq3" id="accordion3">👗 What is the dress code?</button>
+  <div id="faq3" class="panel" role="region" aria-labelledby="accordion3">
+    <div class="panel-content">
+      <p>[Example: Cocktail attire / Semi-formal]</p>
+    </div>
+  </div>
 
-  <button class="accordion">🍽 Will there be food?</button>
-  <div class="panel"><div class="panel-content">
-    <p>[Yes! Dinner and drinks will be provided. Please let us know about allergies.]</p>
-  </div></div>
+  <button class="accordion" aria-expanded="false" aria-controls="faq4" id="accordion4">🍽 Will there be food?</button>
+  <div id="faq4" class="panel" role="region" aria-labelledby="accordion4">
+    <div class="panel-content">
+      <p>[Yes! Dinner and drinks will be provided. Please let us know about allergies.]</p>
+    </div>
+  </div>
 
-  <button class="accordion">🎁 Should I bring a gift?</button>
-  <div class="panel"><div class="panel-content">
-    <p>[Your presence is the best gift. But if you’d like, our registry is here: ___]</p>
-  </div></div>
+  <button class="accordion" aria-expanded="false" aria-controls="faq5" id="accordion5">🎁 Should I bring a gift?</button>
+  <div id="faq5" class="panel" role="region" aria-labelledby="accordion5">
+    <div class="panel-content">
+      <p>[Your presence is the best gift. But if you’d like, our registry is here: ___]</p>
+    </div>
+  </div>
 
-  <button class="accordion">🚗 Is parking available?</button>
-  <div class="panel"><div class="panel-content">
-    <p>[Insert parking instructions]</p>
-  </div></div>
+  <button class="accordion" aria-expanded="false" aria-controls="faq6" id="accordion6">🚗 Is parking available?</button>
+  <div id="faq6" class="panel" role="region" aria-labelledby="accordion6">
+    <div class="panel-content">
+      <p>[Insert parking instructions]</p>
+    </div>
+  </div>
 
-  <button class="accordion">📱 Can I take photos?</button>
-  <div class="panel"><div class="panel-content">
-    <p>[We kindly ask for an unplugged ceremony — please keep your phones tucked away until the reception.]</p>
-  </div></div>
+  <button class="accordion" aria-expanded="false" aria-controls="faq7" id="accordion7">📱 Can I take photos?</button>
+  <div id="faq7" class="panel" role="region" aria-labelledby="accordion7">
+    <div class="panel-content">
+      <p>[We kindly ask for an unplugged ceremony — please keep your phones tucked away until the reception.]</p>
+    </div>
+  </div>
 
-  <button class="accordion">❓ Anything else I should know?</button>
-  <div class="panel"><div class="panel-content">
-    <p>[Add any special notes, schedule, shuttle info, or accommodations.]</p>
-  </div></div>
+  <button class="accordion" aria-expanded="false" aria-controls="faq8" id="accordion8">❓ Anything else I should know?</button>
+  <div id="faq8" class="panel" role="region" aria-labelledby="accordion8">
+    <div class="panel-content">
+      <p>[Add any special notes, schedule, shuttle info, or accommodations.]</p>
+    </div>
+  </div>
 
 </section>
 
@@ -191,15 +218,19 @@
   accordions.forEach((accordion) => {
     accordion.addEventListener("click", function () {
 
+      // Close other accordions
       accordions.forEach((other) => {
         if (other !== this && other.classList.contains("active")) {
           other.classList.remove("active");
+          other.setAttribute("aria-expanded", "false");
           other.nextElementSibling.style.maxHeight = null;
         }
       });
 
+      // Toggle current accordion
       this.classList.toggle("active");
       const panel = this.nextElementSibling;
+      this.setAttribute("aria-expanded", this.classList.contains("active"));
 
       if (panel.style.maxHeight) {
         panel.style.maxHeight = null;
