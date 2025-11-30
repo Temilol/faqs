@@ -25,6 +25,44 @@
       font-family: 'Inter', sans-serif;
       color: var(--color-text);
       background-color: var(--color-bg);
+      position: relative;
+    }
+
+    /* Side Images */
+    body::before,
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0;
+      width: 200px;
+      height: 100vh;
+      background-image: url('image.jpg');
+      background-size: cover;
+      background-position: 38% center;
+      opacity: 0.8;
+      z-index: -1;
+    }
+
+    body::before {
+      left: 0;
+    }
+
+    body::after {
+      right: 0;
+    }
+
+    @media (max-width: 1200px) {
+      body::before,
+      body::after {
+        width: 150px;
+      }
+    }
+
+    @media (max-width: 900px) {
+      body::before,
+      body::after {
+        display: none;
+      }
     }
     
     header {
