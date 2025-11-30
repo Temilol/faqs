@@ -84,6 +84,29 @@
       color: var(--color-text);
     }
 
+    .breadcrumb {
+      max-width: 900px;
+      margin: 20px auto 0;
+      padding: 0 20px;
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    .breadcrumb a {
+      color: var(--color-primary);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .breadcrumb a:hover {
+      color: #b57753;
+      text-decoration: underline;
+    }
+
+    .breadcrumb span {
+      margin: 0 8px;
+    }
+
     .section-wrapper {
       max-width: 900px;
       margin: 40px auto;
@@ -212,6 +235,10 @@
   <h1>Toluwani & Temilola</h1>
   <p>Travel & Accommodations — Flight and Hotel Recommendations</p>
 </header>
+
+<nav class="breadcrumb">
+  <a href="index.html">Home</a> <span>/</span> <span>Travel & Accommodations</span>
+</nav>
 
 <section class="section-wrapper">
 
