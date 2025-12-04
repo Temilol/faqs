@@ -185,8 +185,8 @@
       position: fixed;
       bottom: 30px;
       right: 30px;
-      background: var(--color-primary);
-      color: white;
+      background: white;
+      color: var(--color-primary);
       width: 56px;
       height: 56px;
       border-radius: 50%;
@@ -197,14 +197,15 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+      border: 2px solid var(--color-primary);
       z-index: 1000;
     }
 
     .tooltip-trigger:hover {
-      background: #a3785f;
+      background: var(--color-secondary);
       transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
     }
 
     .tooltip-content {
@@ -431,13 +432,29 @@
   Made with love for our guests — Toluwani & Temilola 💕
 </footer>
 
-<div class="tooltip-trigger" onclick="toggleTooltip()">📍</div>
+<div class="tooltip-trigger" onclick="toggleTooltip(event)">📍</div>
 
 <script>
-  function toggleTooltip() {
+  function toggleTooltip(event) {
+    event.stopPropagation();
     const tooltip = document.getElementById('venueInfo');
     tooltip.classList.toggle('active');
   }
+
+  // Close tooltip when clicking outside
+  document.addEventListener('click', function(event) {
+    const tooltip = document.getElementById('venueInfo');
+    const trigger = document.querySelector('.tooltip-trigger');
+    
+    if (!tooltip.contains(event.target) && !trigger.contains(event.target)) {
+      tooltip.classList.remove('active');
+    }
+  });
+
+  // Prevent clicks inside tooltip from closing it
+  document.getElementById('venueInfo').addEventListener('click', function(event) {
+    event.stopPropagation();
+  });
 </script>
 
 </body>
